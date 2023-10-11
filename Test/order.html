@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,800&family=Roboto+Condensed:ital,wght@1,700&display=swap');
+        .container12{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container12 form img{
+            width: 100%;
+            border-radius: 10px;
+        }
+        
+        .container12 form table .inp{
+            width: 100%;
+            padding: 5px;
+        }
+        form{
+            border: 2px solid darkblue;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        form table label{
+            font-size: 20px;
+        }
+        input[type="radio"] {
+            width: 20px; /* Adjust the width */
+            height: 20px; /* Adjust the height */
+            margin-right: 5px; /* Add some spacing between radio buttons */
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container12">
+        <form action="">
+            <div>
+                <img src="../public/img/item1.jpeg" alt="">
+                <div style="text-align: center;">Type of meal</div>
+            </div>
+            <div>
+                <h1>indias best place for veg food</span></h1>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th><label for="email">Enter registered email</label></th>
+                        <th><input type="email" name="email" required class="inp" placeholder="Enter Email"/></th>
+                    </tr>
+                    <tr>
+                        <th><label for="plate">Enter number of plate</label></th>
+                        <th><input type="number" name="plate" class="inp" placeholder="Enter Quantity" /></th>
+                    </tr>
+                    <tr>
+                        <th><label for="location">Enter your location</label></th>
+                        <th><input type="text" name="location" required class="inp" placeholder="Enter location"/></th>
+                    </tr>
+                    <tr>
+                        <th><label for="password">Enter Password</label></th>
+                        <th><input type="password" name="password" class="inp" require placeholder="Enter Password"/></th>
+                    </tr>
+                    <tr>
+                        <th><label for="payment">Pay methods</label></th>
+                        <th>
+                            <input type="radio" name="payment" value="Pay on delivery" style="font-size: 20px;">Pay on Delivery
+                            <input type="radio" name="payment" value="others">Pay Now
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <input type="submit" value="Place Order">
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>

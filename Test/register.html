@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Food Delivery App - Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container2 {
+            max-width: 400px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .container2 {
+            margin: 10px auto;
+            max-width: 400px;
+            animation: fadeIn 1s ease-in-out;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #007BFF;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            text-align: left;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            /* margin-bottom: 10px; */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container2">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <label for="username">Name</label>
+            <input type="text" id="username" name="username" required placeholder="Enter Name Here"><br><br>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Enter Email"><br><br>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Password"><br><br>
+
+            <label for="password">Confirm Password</label>
+            <input type="password" id="password" name="password" required placeholder="Confirm Password"><br><br>
+
+            <button type="button" onclick="signup()">Sign Up</button>
+        </form>
+    </div>
+
+    <script src="index.js"></script>
+
+    <script>
+        function signup() {
+            // You can add your user registration logic here.
+            // For this example, we'll just display an alert.
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (username && email && password) {
+                alert('Sign Up successful! Redirecting to login...');
+                // You can redirect the user to the login page after successful registration.
+                window.location.href = 'login.html';
+            } else {
+                alert('Please fill in all the required fields.');
+            }
+        }
+    </script>
+</body>
+
+</html>
