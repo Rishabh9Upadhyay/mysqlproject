@@ -4,11 +4,24 @@ const hbs = require("hbs");
 const port = process.env.PORT || 8000;
 const path = require("path");
 const mysql = require("./db/conn").con;
+const session = require("express-session");
 
 
 const templates_path = path.join(__dirname,"../templates/views");
 const static_path = path.join(__dirname,"../public");
 const partial_path = path.join(__dirname,"../templates/partials");
+
+
+
+
+// Set up session middleware
+app.use(session({
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: true
+}));
+
+
 
 
 app.set("view engine","hbs");
@@ -27,6 +40,11 @@ app.get('/login',(req,res)=>{
 app.get('/register',(req,res)=>{
     res.render("register");
 })
+
+
+
+
+
 
 
 
@@ -303,6 +321,75 @@ app.get("/registercustomer",(req,res)=>{
         }
     })
 })
+
+
+app.get("/updatesearch",(req,res)=>{
+    const {phone, password} = req.query;
+    let qry = "select * from customers where phone=? and password=?";
+    mysql.query(qry,[phone,password],(err,results)=>{
+        if(err) throw err;
+        else{
+            if(results.length>0){
+                res.render("update",{mesg1:true, masg2: false, data:results})
+            }else{
+                res.render("update",{mesg1:false, masg2: true})
+            }
+        }
+    })
+})
+
+
+
+app.get('/updatecustomers',(req,res)=>{
+    // fetch data
+    const {username,age,phone,password,cpassword}=req.query;
+    let qry = "update customers set username=?, age=?, password=?, cpassword=? where phone=?";
+    mysql.query(qry,[username,age,password,cpassword,phone],(err,results)=>{
+        if(err) throw err;
+        else{
+            if(results.affectedRows>0){
+                res.render("update",{umesg:true})
+            }
+        }
+    })
+})
+
+
+
+app.get('/update',(req,res)=>{
+    res.render("update")
+})
+
+app.get('/delete',(req,res)=>{
+    res.render("deleteac")
+})
+
+
+
+
+app.get('/rcustomers',(req,res)=>{
+    // fetch data
+    const {phone,password} = req.query;
+    let qry = "delete from customers where phone=? and password=?";
+    mysql.query(qry,[phone,password],(err,results)=>{
+        if(err) throw err;
+        else{
+            if(results.affectedRows>0){
+                res.render("deleteac",{mesg1:true, masg2: false})
+            }else{
+                res.render("deleteac",{mesg1:false, masg2: true})
+
+            }
+        }
+    })
+})
+
+
+
+
+
+
+
 
 app.listen(port,()=>{
     console.log(`The app is running on the port number ${port}`)
